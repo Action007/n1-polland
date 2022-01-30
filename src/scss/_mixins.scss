@@ -1,0 +1,67 @@
+@mixin max-480 {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin max-600 {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin max-800 {
+  @media (max-width: 800px) {
+    @content;
+  }
+}
+
+@mixin max-1000 {
+  @media (max-width: 1000px) {
+    @content;
+  }
+}
+
+@mixin max-1200 {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin line-clamp1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin line-clamp2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin line-clamp3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin line-clamp4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin font-face($font-family, $url, $weight) {
+  @font-face {
+    font-family: "#{$font-family}";
+    src: url("../fonts/#{$url}.woff2") format("woff2"), url("../fonts/#{$url}.woff") format("woff");
+    font-weight: #{$weight};
+    font-display: swap;
+    font-style: normal;
+  }
+}

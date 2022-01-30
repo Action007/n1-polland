@@ -1,0 +1,923 @@
+@import "reset";
+@import "vars";
+@import "mixins";
+@import "fonts";
+@import "libs";
+@import "global";
+
+.header {
+  position: relative;
+  background-image: url("../img/content/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 141px;
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  &__title {
+    margin-top: auto;
+    font-size: 92px;
+    color: $white;
+    font-family: "Montserrat-Bold";
+    line-height: 1;
+    margin-bottom: 10px;
+    text-align: center;
+
+    @include max-800 {
+      font-size: 75px;
+    }
+
+    @include max-600 {
+      font-size: 60px;
+    }
+
+    @include max-480 {
+      font-size: 45px;
+    }
+
+    span {
+      display: block;
+      color: #ed6950;
+    }
+  }
+
+  &__subtitle {
+    font-size: 18px;
+    margin-bottom: 50px;
+    color: #bbbbbb;
+
+    @include max-480 {
+      text-align: center;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 16px 27px 16px 23px;
+    text-transform: uppercase;
+    background-color: $button;
+    color: #b98000;
+    border-radius: 25px;
+    margin-bottom: auto;
+    font-family: "Montserrat-Bold";
+    font-size: 14px;
+    border: 1px solid transparent;
+  }
+
+  &__link:hover {
+    background-color: transparent;
+    border-color: $button;
+    color: $button;
+    transition: all 0.3s ease;
+  }
+
+  &__desc {
+    margin-bottom: 260px;
+    color: $white;
+    transform: translateY(20px);
+  }
+}
+
+.header::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #000000c4;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+
+  &.sticky {
+    background-color: #13382af5;
+  }
+
+  &__form {
+    visibility: hidden;
+    height: 0;
+    background-color: #262626;
+    display: flex;
+    justify-content: center;
+    padding: 0 15px;
+    transition: visibility 0.3s ease;
+
+    &.active-menu {
+      visibility: visible;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1922px;
+    margin: 0 auto;
+    padding: 40px;
+    transition: all 0.3s ease;
+
+    @include max-1200 {
+      padding: 20px;
+    }
+  }
+
+  &__wrapper.sticky {
+    padding: 5px 40px;
+
+    @include max-1200 {
+      padding: 5px 20px;
+    }
+
+    .menu__logo {
+      max-width: 140px;
+      height: 50px;
+
+      @include max-600 {
+        max-width: 100px;
+        height: 37px;
+      }
+    }
+  }
+
+  .search-form {
+    margin-bottom: 0;
+  }
+
+  &__items {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    position: relative;
+    display: inline-block;
+    max-width: 168px;
+    height: 61px;
+    z-index: 3;
+
+    @include max-600 {
+      max-width: 120px;
+      height: 45px;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__list {
+    display: flex;
+    margin-right: 55px;
+
+    @include max-1000 {
+      position: fixed;
+      top: 0;
+      right: -550px;
+      max-width: 300px;
+      width: 100%;
+      height: 100%;
+      background-color: #13382a;
+      margin-right: 20px;
+      padding: 120px 30px 0 40px;
+      display: block;
+      z-index: 1;
+      transition: all 0.4s ease;
+      color: $white;
+      overflow: auto;
+      z-index: 200;
+    }
+
+    @include max-480 {
+      max-width: 280px;
+    }
+
+    &.active {
+      right: -21px;
+    }
+  }
+
+  &__link {
+    color: $white;
+    padding-bottom: 5px;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+
+    @include max-1000 {
+      font-size: 30px;
+    }
+  }
+
+  &__link:hover {
+    color: $button;
+    border-color: $button;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 65px;
+  }
+
+  &__item:not(:last-child) {
+    @include max-1000 {
+      margin: 0 0 70px;
+    }
+  }
+
+  &__burger {
+    display: none;
+    z-index: 5;
+
+    @include max-1000 {
+      display: block;
+      position: relative;
+      width: 30px;
+      height: 20px;
+      z-index: 202;
+    }
+
+    span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      top: 9px;
+      background-color: $white;
+      transition: all 0.3s ease;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      background-color: $white;
+      width: 100%;
+      height: 2px;
+      left: 0;
+      transition: all 0.3s ease;
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+  }
+
+  & .active::before {
+    transform: rotate(45deg);
+    top: 9px;
+  }
+
+  & .active .menu__burger--span {
+    transform: scale(0);
+  }
+
+  & .active::after {
+    transform: rotate(-45deg);
+    bottom: 9px;
+  }
+
+  &__popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 10200;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+  }
+
+  &__input {
+    max-width: 200px;
+    width: 100%;
+    min-height: 30px;
+    border: 1px solid #c2d8f1;
+    outline-offset: 3px;
+    outline: transparent;
+    border-radius: 30px;
+    padding: 0 15px;
+    margin-right: 5px;
+  }
+
+  &__input::placeholder {
+    font-size: 18px;
+    color: #a0a9b3;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.slide {
+  position: absolute;
+  bottom: -217px;
+  left: 0;
+  right: 0;
+  max-width: 1920px;
+  margin: 0 auto;
+
+  @include max-800 {
+    bottom: -153px;
+  }
+
+  &__wrapper {
+    max-width: 381px;
+    margin: 0 auto;
+    padding: 0 5px;
+
+    @include max-800 {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__item {
+    width: 371px;
+
+    @include max-480 {
+      max-width: 280px;
+      height: 320px;
+    }
+  }
+
+  &__img {
+    position: relative;
+    max-width: 370px;
+    height: 430px;
+
+    @include max-480 {
+      max-width: 280px;
+      height: 320px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__img::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0;
+  }
+
+  &__item:hover &__subtitle {
+    position: absolute;
+    bottom: 48%;
+    left: 50%;
+    transform: translate(-50%, 52%);
+    text-align: center;
+
+    span {
+      color: $white;
+    }
+  }
+
+  &__item:hover &__title {
+    font-size: 52px;
+    line-height: 1.2;
+
+    @include max-1200 {
+      font-size: 30px;
+    }
+  }
+
+  &__item:hover &__btn {
+    opacity: 1;
+  }
+
+  &__subtitle {
+    position: absolute;
+    bottom: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    @include line-clamp1;
+    transition: all 0.3s ease;
+    max-width: 340px;
+
+    @include max-1200 {
+      position: absolute;
+      bottom: 48%;
+      left: 50%;
+      transform: translate(-50%, 52%);
+      text-align: center;
+      max-width: 240px;
+
+      span {
+        color: $white;
+      }
+    }
+  }
+
+  &__text {
+    display: block;
+    color: $button;
+    font-family: "Montserrat-Regular";
+    transition: all 0.3s ease;
+    @include line-clamp1;
+  }
+
+  &__list &__subtitle,
+  &__list &__btn {
+    display: none;
+  }
+
+  &__list &__img::before {
+    opacity: 0.6;
+  }
+
+  &__title {
+    font-size: 30px;
+    color: $white;
+    font-family: "Montserrat-Bold";
+    transition: all 0.3s ease;
+    @include line-clamp1;
+  }
+
+  &__btn {
+    position: absolute;
+    bottom: 41px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    padding: 16px 10px;
+    max-width: 214px;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #b98000;
+    background-color: #ffc74a;
+    border-radius: 25px;
+    font-family: "Montserrat-Bold";
+    opacity: 0;
+    transition: all 0.3s ease;
+    border: 1px solid $button;
+
+    @include max-1200 {
+      opacity: 1;
+    }
+
+    @include max-1200 {
+      padding: 13px 10px;
+      max-width: 170px;
+    }
+
+    @include max-800 {
+      max-width: 170px;
+      padding: 10px;
+    }
+  }
+
+  &__btn:hover {
+    background-color: transparent;
+    border-color: $button;
+    transition: all 0.3s ease;
+    color: $button;
+  }
+}
+
+.guide {
+  padding-top: 268px;
+  margin-bottom: 30px;
+
+  @include max-480 {
+    padding-top: 200px;
+  }
+
+  &__title {
+    font-size: 30px;
+    font-family: "Montserrat-Bold";
+    text-align: center;
+    margin-bottom: 51px;
+
+    @include max-480 {
+      font-size: 22px;
+    }
+  }
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 32px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 810px;
+    width: 100%;
+
+    @include max-800 {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 30px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &__item {
+    @include max-480 {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 10px;
+
+    @include max-600 {
+      margin-right: 0;
+    }
+  }
+
+  &__btn {
+    padding: 6px 14px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-family: "Montserrat-Bold";
+    background-color: #bdc8d9;
+    color: $white;
+  }
+
+  &__btn:hover {
+    background-color: $button;
+    color: $white;
+    border-color: transparent;
+    transition: all 0.3s ease;
+  }
+
+  .mixitup-control-active {
+    background-color: $button;
+    color: $white;
+    border-color: transparent;
+    transition: all 0.3s ease;
+  }
+
+  &__products {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 30px;
+    justify-content: center;
+  }
+
+  &__li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 370px;
+    width: 100%;
+    padding: 10px 10px 30px;
+    min-height: 350px;
+    width: 100%;
+    text-align: center;
+    border: 2px solid #bdc8d948;
+    overflow: hidden;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+      border-color: transparent;
+      box-shadow: 0px 30px 50px 0px #0000001a;
+    }
+  }
+
+  &__product-img {
+    max-width: 351px;
+    height: 169px;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 22px;
+
+    &:hover img {
+      transform: scale(1.2);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+
+      @include max-480 {
+        object-fit: contain;
+      }
+    }
+  }
+
+  &__wrapper {
+    margin-bottom: 26px;
+    @include line-clamp4;
+  }
+
+  &__subtitle {
+    font-size: 30px;
+    line-height: 1.3;
+    font-family: "Montserrat-Regular";
+  }
+
+  &__text {
+    font-size: 14px;
+    font-family: "Montserrat-Regular";
+  }
+
+  &__product-btn {
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: "Montserrat-Bold";
+    color: #bdc8d9;
+    border: 1px solid #bdc8d9;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+
+    @include max-1200 {
+      color: #b98000;
+      background-color: $button;
+      border-color: transparent;
+    }
+  }
+
+  &__product-btn:hover {
+    color: #b98000;
+    background-color: $button;
+    border-color: transparent;
+  }
+}
+
+.about {
+  padding: 65px 0 139px;
+  background-color: #f8fafb;
+  background-image: url("../img/content/about-bg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center right -300px;
+
+  @include max-1200 {
+    background-position: top right -300px;
+  }
+
+  @include max-480 {
+    padding: 50px 0 70px;
+  }
+
+  &__title {
+    margin-bottom: 70px;
+    font-size: 29px;
+    font-family: "Montserrat-Bold";
+    text-align: center;
+
+    @include max-480 {
+      margin-bottom: 35px;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+
+    @include max-1200 {
+      flex-direction: column-reverse;
+      align-items: center;
+      row-gap: 45px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 520px;
+    padding-top: 45px;
+
+    @include max-1200 {
+      max-width: 700px;
+      align-items: center;
+    }
+
+    @include max-480 {
+      padding-top: 0;
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 42px;
+    font-size: 35px;
+    color: #f8c759;
+
+    @include max-480 {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__text {
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 55px;
+
+    p:not(:last-child) {
+      margin-bottom: 40px;
+    }
+  }
+  &__btn {
+    display: inline-block;
+    padding: 16px 44px;
+    border-radius: 25px;
+    background-color: $button;
+    font-family: "Montserrat-Bold";
+    color: #b98000;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+
+    @include max-600 {
+      padding: 10px 30px;
+    }
+  }
+
+  &__btn:hover {
+    background-color: transparent;
+    border-color: $button;
+    color: $button;
+  }
+}
+
+.footer {
+  font-family: "Montserrat-Bold";
+
+  &__top {
+    padding: 183px 0 201px;
+    background-image: url("../img/content/bg3.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+
+    @include max-480 {
+      padding: 80px 0 80px;
+    }
+  }
+
+  &__title {
+    font-size: 92px;
+    color: $white;
+    margin-bottom: 28px;
+
+    @include max-1200 {
+      font-size: 65px;
+    }
+
+    @include max-800 {
+      font-size: 55px;
+    }
+
+    @include max-600 {
+      font-size: 40px;
+    }
+
+    @include max-480 {
+      font-size: 26px;
+    }
+  }
+
+  &__btn {
+    display: inline-block;
+    padding: 16px 43px;
+    margin-bottom: 45px;
+    border-radius: 25px;
+    color: #b98000;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: $button;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+
+    @include max-600 {
+      padding: 10px 35px;
+    }
+  }
+
+  &__btn:hover {
+    background-color: transparent;
+    border-color: $button;
+    color: $button;
+  }
+
+  &__desc {
+    font-size: 18px;
+    font-family: "Montserrat-Regular";
+    color: $white;
+  }
+
+  &__link {
+    color: $button;
+    border-bottom: 1px solid $button;
+    font-family: inherit;
+  }
+
+  &__bottom {
+    padding: 167px 0 218px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("../img/content/polind.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    @include max-480 {
+      padding: 70px 0 70px;
+    }
+  }
+
+  &__logo {
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    font-size: 23px;
+
+    @include max-480 {
+      font-size: 18px;
+    }
+  }
+}
+
+.swiper-slide-prev .slide__img::before,
+.swiper-slide-next .slide__img::before,
+.swiper-slide-active .slide__img::before {
+  opacity: 0;
+}
+
+.swiper-slide-prev .slide__img::before,
+.swiper-slide-next .slide__img::before {
+  @include max-1200 {
+    opacity: 0.6;
+  }
+}
+
+.swiper-slide-prev .slide__subtitle,
+.swiper-slide-prev .slide__btn,
+.swiper-slide-prev .slide__img,
+.swiper-slide-next .slide__subtitle,
+.swiper-slide-next .slide__btn,
+.swiper-slide-next .slide__img,
+.swiper-slide-active .slide__subtitle,
+.swiper-slide-active .slide__btn,
+.swiper-slide-active .slide__img {
+  display: block;
+}
+
+.swiper-slide-prev .slide__subtitle,
+.swiper-slide-prev .slide__btn,
+.swiper-slide-next .slide__subtitle,
+.swiper-slide-next .slide__btn {
+  @include max-1200 {
+    display: none;
+  }
+}

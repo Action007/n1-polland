@@ -1,0 +1,20 @@
+$button: #ffc74a;
+$main: #606f81;
+$white: #fff;
+
+%monserrat-400 {
+  font-family: "Monserrat", sans-serif;
+  font-weight: 400;
+}
+
+%monserrat-700 {
+  font-family: "Monserrat", sans-serif;
+  font-weight: 700;
+}
+
+@function max($numbers...) {
+  @return m#{a}x(#{$numbers});
+}
+@function min($numbers...) {
+  @return m#{i}n(#{$numbers});
+}

@@ -1,0 +1,160 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  min-height: 100%;
+  color: $main;
+  font-size: 16px;
+  font-family: "Montserrat-Regular";
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+}
+
+body.lock1,
+body.lock2 {
+  overflow: hidden;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  &--big {
+    max-width: 1800px;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+button {
+  border: none;
+  outline: transparent;
+  cursor: pointer;
+  background: none;
+}
+
+.search-svg {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 50%;
+
+  @include max-1200 {
+    background-color: $button;
+  }
+
+  @include max-1200 {
+    width: 60px;
+  }
+
+  @include max-480 {
+    width: 65px;
+  }
+
+  &:active {
+    transform: translateY(3px);
+  }
+
+  &__item {
+    width: 43px;
+    height: 20px;
+    fill: $button;
+    transition: fill 0.3s ease;
+
+    @include max-1200 {
+      width: 35px;
+      fill: $white;
+    }
+  }
+
+  &:hover &__item {
+    fill: $white;
+  }
+
+  &:hover {
+    background-color: $button;
+    box-shadow: 0 2px 5px 1px rgb(64, 60, 67);
+    border-color: rgba(223, 225, 229, 0);
+  }
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  max-width: 810px;
+  width: 100%;
+  margin-bottom: 20px;
+
+  &__label {
+    width: 100%;
+    margin-right: 10px;
+  }
+
+  &__input {
+    width: 100%;
+    min-height: 59px;
+    border: 1px solid #c2d8f1;
+    outline-offset: 3px;
+    outline: transparent;
+    border-radius: 30px;
+    padding: 0 30px;
+  }
+
+  &__input:focus {
+    background-color: #fff;
+    box-shadow: 0 2px 5px 1px rgb(64, 60, 67 / 16%);
+    border-color: rgba(223, 225, 229, 0);
+  }
+
+  &__input::placeholder {
+    font-size: 18px;
+    color: #a0a9b3;
+  }
+}
+
+.menu-search {
+  @include max-1200 {
+    width: 40px;
+    height: 40px;
+  }
+
+  @include max-1000 {
+    margin-right: 25px;
+  }
+}
+
+.close {
+  display: none;
+}
+
+.menu-search.active {
+  .search {
+    display: none;
+  }
+
+  .close {
+    display: block;
+  }
+}

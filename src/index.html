@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="img/favicon/favicon.png">
+  <title>Polind | The best trip of your life</title>
+  <link rel="stylesheet" href="css/main.min.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <nav class="menu">
+      <div class="menu__form">
+        <form class="search-form">
+          <label class="search-form__label">
+            <input class="search-form__input" type="text" placeholder="Search place">
+          </label>
+          <button class="search-svg" type="submit">
+            <svg class="search-svg__item">
+              <use xlink:href="img/sprite.svg#search">
+              </use>
+            </svg>
+            <span class="sr-only">search</span>
+          </button>
+        </form>
+      </div>
+      <div class="menu__wrapper">
+        <a class="menu__logo" href="#">
+          <img data-src="img/icon/header-logo.png" src="img/content/1x1.gif" alt="logotype">
+        </a>
+        <div class="menu__items">
+          <ul class="menu__list">
+            <li class="menu__item">
+              <a class="menu__link" data-goto=".about" href="#">Guide</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" data-goto=".footer" href="#">Journey</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" data-goto=".guide__title" href="#">Hotels</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="#" data-goto=".slide">Travelers</a>
+            </li>
+          </ul>
+          <button class="search-svg menu-search" type="button">
+            <svg class="search-svg__item search">
+              <use xlink:href="img/sprite.svg#search">
+              </use>
+            </svg>
+            <svg class="search-svg__item close">
+              <use xlink:href="img/sprite.svg#x"></use>
+            </svg>
+            <span class="sr-only">search</span>
+          </button>
+          <button class="menu__burger" type="button">
+            <span class="menu__burger--span">
+              <span class="sr-only">
+                Button for additional menu
+              </span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="menu__popup"></div>
+    </nav>
+    <div class="container">
+      <div class="header__wrapper">
+        <h1 class="header__title">
+          Fall in love
+          <span>with Poland</span>
+        </h1>
+        <div class="header__subtitle">
+          Best way to find your perfect place in Poland
+        </div>
+        <a class="header__link" href="#">
+          search your place
+        </a>
+        <div class="header__desc">
+          Popular places to discover
+        </div>
+      </div>
+    </div>
+    <div class="slide swiper-container">
+      <ul class="slide__list swiper-wrapper">
+        @loop('components/_slide__item.html', [
+        {
+        "img" : "slide1",
+        "alt" : "View of Zakopane from Butorowy Wierch",
+        "title" : "Zakopane",
+        "span" : "Małopolskie"},
+        {"img" : "slide2",
+        "alt" : "The Sandomierz Royal Castle",
+        "title" : "Sandomierz",
+        "span" : "Swietokrzyskie"},
+        {"img" : "slide3",
+        "alt" : "Beach",
+        "title" : "Sopot",
+        "span" : "Pomorskie"},
+        {"img" : "slide1",
+        "alt" : "View of Zakopane from Butorowy Wierch",
+        "title" : "Zakopane",
+        "span" : "Małopolskie"},
+        {"img" : "slide2",
+        "alt" : "The Sandomierz Royal Castle",
+        "title" : "Sandomierz",
+        "span" : "Swietokrzyskie"},
+        {"img" : "slide3",
+        "alt" : "Beach",
+        "title" : "Sopot",
+        "span" : "Pomorskie"},
+        ])
+      </ul>
+    </div>
+  </header>
+  <main class="main">
+    <section class="guide">
+      <div class="container">
+        <h2 class="guide__title">
+          Where you want to go?
+        </h2>
+        <div class="guide__wrap">
+          <form class="search-form">
+            <label class="search-form__label">
+              <input class="search-form__input" type="text" placeholder="Search place">
+            </label>
+            <button class="search-svg" type="submit">
+              <svg class="search-svg__item">
+                <use xlink:href="img/sprite.svg#search">
+                </use>
+              </svg>
+              <span class="sr-only">search</span>
+            </button>
+          </form>
+          <nav class="guide__nav">
+            <ul class="guide__list">
+              <li class="guide__item">
+                <button class="guide__btn" type="button" data-filter="all">All</button>
+              </li>
+              <li class="guide__item">
+                <button class="guide__btn" type="button" data-filter=".category-a">Cracow</button>
+              </li>
+              <li class="guide__item">
+                <button class="guide__btn" type="button" data-filter=".category-b">Zakopane</button>
+              </li>
+              <li class="guide__item">
+                <button class="guide__btn" type="button" data-filter=".category-c">Sopot</button>
+              </li>
+              <li class="guide__item">
+                <button class="guide__btn" type="button" data-filter=".category-d">Mazury</button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <ul class="guide__products">
+          @loop('components/_guide__product.html', [
+          {
+          "img" : "product1",
+          "alt" : "Poznan: Architecture image",
+          "title" : "Poznan",
+          "span" : "Wielkopolskie",
+          "mixitup": "mix category-a"},
+          {"img" : "product2",
+          "alt" : "Poznan: Architecture image",
+          "title" : "Warsaw",
+          "span" : "Mazowieckie",
+          "mixitup": "mix category-a"},
+          {"img" : "product3",
+          "alt" : "Wroclaw: Architecture image",
+          "title" : "Wroclaw",
+          "span" : "Dolnoslaskie",
+          "mixitup": "mix category-b"},
+          {"img" : "product4",
+          "alt" : "Karpacz: image of nature",
+          "title" : "Karpacz",
+          "span" : "Dolnoslaskie",
+          "mixitup": "mix category-b"},
+          {"img" : "product5",
+          "alt" : "Dolina olyczska: image of nature",
+          "title" : "Dolina olyczska",
+          "span" : "Malopolskie",
+          "mixitup": "mix category-c"},
+          {"img" : "product6",
+          "alt" : "Kozy: image of nature",
+          "title" : "Kozy",
+          "span" : "Slaskies",
+          "mixitup": "mix category-d"}
+          ])
+        </ul>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="container">
+        <h2 class="about__title">
+          Explore city
+        </h2>
+        <div class="about__inner">
+          <div class="about__wrapper">
+            <h3 class="about__subtitle">
+              Sandomierz
+            </h3>
+            <div class="about__text">
+              <p>
+                Sandomierz is one of the oldest and historically most significant cities in Poland. Archeological finds
+                around the city
+                indicate that humans have inhabited the area since neolithic times. The city came into existence in the
+                early Middle
+                Ages, taking advantage of an excellent location at the junction of Vistula and San rivers, and on the
+                path of important
+                trade routes.
+              </p>
+              <p>
+                The first known historical mention of the city comes from the early 12th-century, when the chronicler
+                Gallus Anonymus
+                ranked it together with Kraków and Wrocław as one of the main cities of Poland. The testament (ca
+                1115-1118) of Bolesław
+                III Wrymouth, in which he divided Poland among his sons, designated Sandomierz as the capital of one of
+                the resulting
+                principalities, the Duchy of Sandomierz.
+              </p>
+            </div>
+            <div class="about__wrap-btn">
+              <a class="about__btn" href="#">
+                check offers
+              </a>
+            </div>
+          </div>
+          <div class="about__img">
+            <img data-src="img/content/about.jpg" src="img/content/1x1.gif" alt="Side shot the Sandomierz Royal Castle">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="container">
+        <h2 class="footer__title">
+          Enjoy your journey
+        </h2>
+        <a class="footer__btn" href="#">
+          sign up
+        </a>
+        <div class="footer__desc">
+          <p>You can also sign up on our <a class="footer__link" href="#">newsletter</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <a class="footer__logo" href="#">
+        <img data-src="img/icon/footer-logo.png" src="img/content/1x1.gif" alt="logotype">
+      </a>
+      <div class="footer__text">
+        <p>
+          All rights reserved by symu.co
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
